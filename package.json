@@ -1,0 +1,47 @@
+{
+  "name": "fiolika.art-site",
+  "version": "1.0.0",
+  "description": "source of fiolika.art site",
+  "scripts": {
+    "dev": "beefy src/index.js:bundle.js --open --index=src/index.html --cwd build -- -t @ladjs/babelify",
+    "build": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o static/bundle.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "author": {
+    "name": "SAPer",
+    "email": "gsaper@gmail.com"
+  },
+  "dependencies": {
+    "fade-props": "^2.1.0",
+    "lucid-router": "^1.5.0",
+    "react": "^16.2.0",
+    "react-anix": "^0.1.8",
+    "react-css-animation-group": "^1.0.2",
+    "react-dom": "^16.2.0",
+    "react-images": "^0.5.17",
+    "react-responsive-masonry": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "@ladjs/babelify": "^8.0.1",
+    "beefy": "^2.1.8",
+    "browserify": "^16.1.1",
+    "envify": "^4.1.0",
+    "eslint": "^4.18.2",
+    "eslint-plugin-react": "^7.7.0",
+    "fast-glob": "^2.1.0",
+    "fs-extra": "^5.0.0",
+    "uglifyify": "^4.0.5"
+  }
+}

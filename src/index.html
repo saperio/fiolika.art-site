@@ -1,0 +1,74 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Indie+Flower" rel="stylesheet">
+	<style type="text/css">
+		.about {
+			font-family: 'PT Sans', sans-serif;
+			font-size: 1.5em;
+		}
+		nav {
+			overflow: hidden;
+			padding: 0.8em 1em;
+			font-family: 'Indie Flower', cursive;
+			font-size: 1.9em;
+
+			-webkit-touch-callout: none; /* iOS Safari */
+    		-webkit-user-select: none; /* Safari */
+     		-khtml-user-select: none; /* Konqueror HTML */
+       		-moz-user-select: none; /* Firefox */
+        	-ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+		}
+
+		nav a,b {
+			color: #000;
+			text-decoration: none;
+			display: inline-block;
+			padding: 0 1em;
+		}
+
+		nav a:visited {
+			color: #000;
+		}
+
+		nav a:hover {
+			text-decoration: underline black;
+		}
+
+		nav .navWide {
+			margin: 0 auto;
+		}
+
+		nav .navWide .wideDiv {
+			text-align: center;
+		}
+
+		#ava {
+			float: right;
+		    padding: 16px;
+		    border: 2px solid #b0b0b0;
+		    margin-left: 35px;
+		}
+
+		@media screen and (-webkit-device-pixel-ratio: 2),(-webkit-device-pixel-ratio: 3),(-webkit-device-pixel-ratio: 4) {
+			body {
+				font-size: 80%
+			}
+		}
+
+		@media screen and (max-width: 550px) {
+			#ava {
+				width: 90%;
+				float: none;
+				margin: 0px auto 20px auto;
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="root"></div>
+	<script src="./bundle.js"></script>
+</body>
+</html>
