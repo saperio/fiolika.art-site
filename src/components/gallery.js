@@ -1,40 +1,49 @@
 import React from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import Lightbox from 'react-images';
 
 import { setCurrentImage } from '../state';
 
+const lightbox = props => {
+	const { images, currentImage } = props;
+	const isOpen = currentImage !== undefined && currentImage !== -1;
 
-export default class Gallery extends React.Component {
-	constructor() {
-		super();
-		this.state = {currentImage: 0 };
-		//this.closeLightbox = this.closeLightbox.bind(this);
-		this.openLightbox = this.openLightbox.bind(this);
-		//this.gotoNext = this.gotoNext.bind(this);
-		//this.gotoPrevious = this.gotoPrevious.bind(this);
+	return (
+		<Lightbox
+			images={images}
+			currentImage={currentImage}
+			isOpen={isOpen}
+			showImageCount={false}
+			onClose={()=>{}}
+			onClickPrev={()=>{}}
+			onClickNext={()=>{}}
+		/>
+	);
+}
+
+export default props => {
+	const { images } = props;
+
+	if (!images || !images.length) {
+		return <div className="gallery-loading">Loading...</div>
 	}
-	openLightbox(event, obj) {
-		this.setState({
-			currentImage: 1,
-			lightboxIsOpen: true
-		});
-	}
-	render() {
-		const { images } = this.props;
-		return (
+
+	return (
+		<div>
 			<ResponsiveMasonry columnsCountBreakPoints={{ 480: 1, 500: 2, 1000: 3 }}>
-				<Masonry gutter={'10'}>
-					{images.map((image, i) => (
+				<Masonry gutter="10">
+					{images.map((image, idx) => (
 						<img
-							key={i}
+							key={`image_${idx}`}
 							src={image.src}
 							style={{ width: '100%', display: 'block' }}
 							alt=""
-							onClick={setCurrentImage}
+							onClick={() => setCurrentImage(idx)}
 						/>
 					))}
 				</Masonry>
 			</ResponsiveMasonry>
-		);
-	}
-}
+			{lightbox(props)}
+		</div>
+	)
+};
