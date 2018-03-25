@@ -8,12 +8,12 @@ import { PAGE_ABOUT, PAGE_SECT1, PAGE_SECT2 } from './constants';
 
 
 const main = props => {
-	const { page, img } = props;
+	const { page, imagesDB } = props;
 	switch(page) {
-		case PAGE_SECT1: return <Gallary key={PAGE_SECT1} images={img.section1}/>;
-		case PAGE_SECT2: return <Gallary key={PAGE_SECT2} images={img.section2}/>;
-		case PAGE_ABOUT: return <About key={PAGE_ABOUT}/>;
-		default: return <div key="empty"></div>;
+		case PAGE_SECT1: return <Gallary key={page} images={imagesDB.section1 || []}/>;
+		case PAGE_SECT2: return <Gallary key={page} images={imagesDB.section2 || []}/>;
+		case PAGE_ABOUT: return <About key={page}/>;
+		default: return <div key="empty_page"></div>;
 	}
 }
 
