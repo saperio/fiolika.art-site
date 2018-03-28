@@ -72,6 +72,24 @@
 				display: block;
 			}
 		}
+
+		.fd-enter {
+			opacity: 0;
+		}
+
+		.fd-enter.fd-enter-active {
+			opacity: 1;
+			transition: opacity 1000ms ease-in-out;
+		}
+
+		.fd-exit {
+			opacity: 1;
+		}
+
+		.fd-exit.fd-exit-active {
+			opacity: 0;
+			transition: opacity 800ms ease-in-out;
+		}
 	</style>
 </head>
 <body>

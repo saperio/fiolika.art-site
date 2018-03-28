@@ -4,7 +4,7 @@
   "description": "source of fiolika.art site",
   "scripts": {
     "dev": "beefy src/index.js:bundle.js --open --index=src/index.html --cwd build -- -t @ladjs/babelify",
-    "build": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o static/bundle.js"
+    "build": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o build/bundle.js"
   },
   "babel": {
     "presets": [
@@ -25,7 +25,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-images": "^0.5.17",
-    "react-responsive-masonry": "^2.0.0"
+    "react-responsive-masonry": "^2.0.0",
+    "react-transition-group": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",

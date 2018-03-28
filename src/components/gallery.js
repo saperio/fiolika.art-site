@@ -11,10 +11,10 @@ const lightbox = props => {
 	return (
 		<Lightbox
 			images={images}
-			currentImage={currentImage}
+			currentImage={currentImage > 0 ? currentImage : 0}
 			isOpen={isOpen}
 			showImageCount={false}
-			onClose={()=>{}}
+			onClose={()=>setCurrentImage(-1)}
 			onClickPrev={()=>{}}
 			onClickNext={()=>{}}
 		/>
