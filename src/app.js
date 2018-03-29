@@ -1,56 +1,12 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
+import Transition from './transition';
 import Gallary from './components/gallery';
 import About from './components/about';
 import Nav from './components/nav';
 import { PAGE_ABOUT, PAGE_SECT1, PAGE_SECT2 } from './constants';
 
 
-class Transition extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { currentNode: props.children };
-	}
-
-	componentWillReceiveProps({ children }) {
-		const { currentNode } = this.state;
-
-		if (currentNode.key === children.key) {
-			this.setState({ currentNode: children, nextNode: null });
-		} else {
-			this.setState({ nextNode: children });
-		}
-	}
-
-	switchNodes() {
-		const { nextNode } = this.state;
-		if (nextNode) {
-			this.setState({ currentNode: nextNode, nextNode: null });
-		}
-	}
-
-	render() {
-		const { currentNode, nextNode } = this.state;
-		const { enterTime, exitTime } = this.props;
-		const entering = !nextNode;
-
-		return (
-			<CSSTransition
-				in={entering}
-				timeout={{enter: enterTime, exit: exitTime}}
-				classNames='fd'
-				onExited={() => this.switchNodes()}
-			>
-				{currentNode}
-			</CSSTransition>
-		);
-	}
-}
-
-
-
-
-const Main = props => {
+const renderPage = props => {
 	const { page, imagesDB, currentImage } = props;
 	switch(page) {
 		case PAGE_SECT1: return <Gallary key={page} images={imagesDB.section1 || []} currentImage={currentImage}/>;
@@ -65,8 +21,8 @@ export default props => (
 		<Nav page={props.page}/>
 		<br />
 		<div style={{ width: '90%', margin: '0 auto'}}>
-			<Transition enterTime={1000} exitTime={800}>
-				{Main(props)}
+			<Transition enterTime={500} exitTime={300}>
+				{renderPage(props)}
 			</Transition>
 		</div>
 	</div>
