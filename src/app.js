@@ -1,4 +1,5 @@
 import React from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Transition from './transition';
 import Gallary from './components/gallery';
 import About from './components/about';
@@ -17,13 +18,12 @@ const renderPage = props => {
 }
 
 export default props => (
-	<div>
+	<Scrollbars autoHide={false} key={`scroll__${props.pageTransition}`}>
 		<Nav page={props.page}/>
-		<br />
 		<div style={{ width: '90%', margin: '0 auto'}}>
-			<Transition enterTime={500} exitTime={300}>
+			<Transition enterTime={500} exitTime={300} page={props.page}>
 				{renderPage(props)}
 			</Transition>
 		</div>
-	</div>
+	</Scrollbars>
 );
