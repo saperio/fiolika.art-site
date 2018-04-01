@@ -1,25 +1,15 @@
 import React from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import Lightbox from 'react-images';
+import Lightbox from './lightbox';
 
 import { setCurrentImage } from '../state';
 
-const lightbox = props => {
-	const { images, currentImage } = props;
-	const isOpen = currentImage !== undefined && currentImage !== -1;
 
-	return (
-		<Lightbox
-			images={images}
-			currentImage={currentImage > 0 ? currentImage : 0}
-			isOpen={isOpen}
-			showImageCount={false}
-			onClose={()=>setCurrentImage(-1)}
-			onClickPrev={()=>{}}
-			onClickNext={()=>{}}
-		/>
-	);
-}
+const openLightbox = (props, idx) => {
+	if (props.wideWindow) {
+		setCurrentImage(idx);
+	}
+};
 
 export default props => {
 	const { images } = props;
@@ -38,12 +28,12 @@ export default props => {
 							src={image.src}
 							style={{ width: '100%', display: 'block' }}
 							alt=""
-							onClick={() => setCurrentImage(idx)}
+							onClick={() => openLightbox(props, idx)}
 						/>
 					))}
 				</Masonry>
 			</ResponsiveMasonry>
-			{lightbox(props)}
+			<Lightbox {...props} />
 		</div>
 	)
 };
