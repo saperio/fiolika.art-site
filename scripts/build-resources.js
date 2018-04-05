@@ -3,22 +3,27 @@ const glob = require('fast-glob');
 const fse = require('fs-extra');
 const sharp = require('sharp');
 
-const src = './resources';
+const srcStatic = './src/index.html';
+const srcImages = './resources';
 const destRoot = './build';
 const destImages = 'i';
 const destMeta = 'm.json';
+const destStatic = 'index.html';
 let imageIndex = 0;
 let processTimeAll = 0;
 
 run();
 
 async function run() {
+	// copy static
+	fse.cope(srcStatic, path.join(destRoot, destStatic));
+
 	// remove dest dir contents
 	await fse.emptyDir(path.join(destRoot, destImages));
 
 	// process images
 	const meta = {};
-	const sectionsList = await glob(`${src}/*`, { onlyFiles: false });
+	const sectionsList = await glob(`${srcImages}/*`, { onlyFiles: false });
 	for (let section of sectionsList) {
 		let imageList = await glob(`${section}/*`);
 		let sectionName = path.basename(section);

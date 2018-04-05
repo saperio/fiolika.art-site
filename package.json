@@ -4,8 +4,9 @@
   "description": "source of fiolika.art site",
   "scripts": {
     "dev": "beefy src/index.js:bundle.js --open --index=src/index.html --cwd build -- -t @ladjs/babelify",
-    "build": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o build/bundle.js",
-    "images": "node ./scripts/images"
+    "build-code": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o build/bundle.js",
+    "build-resources": "node ./scripts/build-resources",
+    "build": "npm run build-code && npm run build-resources"
   },
   "babel": {
     "presets": [
