@@ -12,9 +12,13 @@ export default props => {
 		return null;
 	}
 
+	const largeImages = images.map(image => ({
+		src: image.large.file
+	}));
+
 	return (
 		<Lightbox
-			images={images}
+			images={largeImages}
 			currentImage={currentImage}
 			isOpen={isOpen}
 			showImageCount={false}

@@ -25,7 +25,7 @@ export default props => {
 					{images.map((image, idx) => (
 						<img
 							key={`image_${idx}`}
-							src={image.src}
+							src={image.small.file}
 							style={{ width: '100%', display: 'block' }}
 							alt=""
 							onClick={() => openLightbox(props, idx)}

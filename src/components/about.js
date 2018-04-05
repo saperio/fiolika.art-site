@@ -4,7 +4,7 @@ const text = `Hi! My name is Anastasia. I'm from St.Petersburg. I make jewelry a
 
 export default () => (
 	<div className="about">
-		<img id="ava" src="img/me.jpg" />
+		<img id="ava" src="me.jpg" />
 		<span>{text}</span>
 	</div>
 );
