@@ -6,7 +6,8 @@
     "dev": "beefy src/index.js:bundle.js --open --index=src/index.html --cwd build -- -t @ladjs/babelify",
     "build-code": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o build/bundle.js",
     "build-resources": "node ./scripts/build-resources",
-    "build": "npm run build-code && npm run build-resources"
+    "build": "npm run build-code && npm run build-resources",
+    "serv": "static ./build -p 9966 --spa"
   },
   "babel": {
     "presets": [
