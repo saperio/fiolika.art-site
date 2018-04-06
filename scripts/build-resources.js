@@ -26,7 +26,7 @@ async function run() {
 	const meta = {};
 	const sectionsList = await glob(`${srcImages}/*`, { onlyDirectories: true });
 	for (let section of sectionsList) {
-		let imageList = await glob(`${section}/*`);
+		let imageList = await glob([`${section}/*.jpg`, `${section}/*.png`]);
 		let sectionName = path.basename(section);
 
 		let sectionMeta = await processImages(sectionName, imageList);
@@ -53,6 +53,7 @@ async function processImage(imagePath) {
 	const idx = imageIndex++;
 	const processor = sharp(imagePath);
 
+	// make large image
 	const largeImageFile = path.join(destImages, `i${idx}.jpg`);
 	const largeImage = await processor
 		.clone()
@@ -63,6 +64,7 @@ async function processImage(imagePath) {
 	;
 	await fse.outputFile(path.join(destRoot, largeImageFile), largeImage);
 
+	// make small image
 	const smallImageFile = path.join(destImages, `i${idx}s.jpg`);
 	const smallImage = await processor
 		.clone()
@@ -72,12 +74,15 @@ async function processImage(imagePath) {
 	;
 	await fse.outputFile(path.join(destRoot, smallImageFile), smallImage);
 
+	// read image notes
+	const notes = await readNotes(imagePath);
+
 	const processTime = Date.now() - startTime;
 	console.log(`process '${imagePath}' in ${processTime / 1000}s`);
 
 	processTimeAll += processTime;
 
-	return {
+	const meta = {
 		large: {
 			file: largeImageFile
 		},
@@ -85,4 +90,24 @@ async function processImage(imagePath) {
 			file: smallImageFile
 		}
 	};
+
+	if (notes) {
+		meta.notes = notes;
+	}
+
+	return meta;
+}
+
+async function readNotes(imagePath) {
+	const { name, dir } = path.parse(imagePath);
+	const filename = path.join(dir, `${name}.txt`);
+
+	let raw;
+	try {
+		raw = await fse.readFile(filename);
+	} catch(e) {
+		return;
+	}
+
+	return raw.toString();
 }
