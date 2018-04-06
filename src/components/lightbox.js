@@ -13,7 +13,8 @@ export default props => {
 	}
 
 	const largeImages = images.map(image => ({
-		src: image.large.file
+		src: image.large.file,
+		caption: image.notes
 	}));
 
 	return (
@@ -25,6 +26,7 @@ export default props => {
 			onClose={() => setCurrentImage(-1)}
 			onClickPrev={() => setCurrentImage(currentImage - 1)}
 			onClickNext={() => setCurrentImage(currentImage + 1)}
+			backdropClosesModal={true}
 		/>
 	);
 };
