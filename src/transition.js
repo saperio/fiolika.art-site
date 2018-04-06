@@ -1,6 +1,5 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { pageTransitionDone } from './state';
 
 export default class Transition extends React.Component {
 	constructor(props) {
@@ -27,7 +26,7 @@ export default class Transition extends React.Component {
 
 	render() {
 		const { currentNode, nextNode } = this.state;
-		const { enterTime, exitTime, page } = this.props;
+		const { enterTime, exitTime } = this.props;
 		const entering = !nextNode;
 
 		return (
@@ -36,7 +35,6 @@ export default class Transition extends React.Component {
 				timeout={{enter: enterTime, exit: exitTime}}
 				classNames='pagetransition'
 				onExited={() => this.switchNodes()}
-				onEntered={() => pageTransitionDone(page)}
 			>
 				{currentNode}
 			</CSSTransition>

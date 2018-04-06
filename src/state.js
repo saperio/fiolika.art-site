@@ -54,9 +54,9 @@ export const withGlobalState = Component =>
 		render() {
 			return <Component {...this.props} {...this.state} />;
 		}
-	};
+	}
+;
 
 // actions, mutate global state
 export const setPage = page => updateState({ page });
 export const setCurrentImage = currentImage => updateState({ currentImage });
-export const pageTransitionDone = pageTransition => updateState({ pageTransition });

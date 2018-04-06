@@ -26,7 +26,6 @@
     "fade-props": "^2.1.0",
     "lucid-router": "^1.5.0",
     "react": "^16.2.0",
-    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.2.0",
     "react-images": "^0.5.17",
     "react-responsive-masonry": "^2.0.0",
