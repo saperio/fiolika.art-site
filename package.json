@@ -7,7 +7,8 @@
     "build-code": "browserify src/index.js -g [envify --NODE_ENV production] -g uglifyify -t @ladjs/babelify -o build/bundle.js",
     "build-resources": "node ./scripts/build-resources",
     "build": "npm run build-code && npm run build-resources",
-    "serv": "static ./build -p 9966 --spa"
+    "serv": "static ./build -p 9966 --spa",
+    "publish": "surge ./build"
   },
   "babel": {
     "presets": [
