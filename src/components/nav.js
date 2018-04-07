@@ -15,8 +15,8 @@ export default props => (
 		<div className="navWide">
 			<div className="wideDiv">
 				{link(PAGE_SECT1, 'watercolor works', props)}
-				{link(PAGE_SECT2, 'sketches & other staff', props)}
-				{link(PAGE_SECT3, 'History of my way', props)}
+				{link(PAGE_SECT2, 'sketches & other stuff', props)}
+				{link(PAGE_SECT3, 'history of my way', props)}
 				{link(PAGE_ABOUT, 'about me & contacts', props)}
 			</div>
 		</div>
