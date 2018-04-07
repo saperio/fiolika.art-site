@@ -20,14 +20,13 @@ export default props => {
 
 	return (
 		<div>
-			<ResponsiveMasonry columnsCountBreakPoints={{ 480: 1, 500: 2, 1000: 3 }}>
-				<Masonry gutter="10">
+			<ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 450: 2, 900: 3, 1600: 4 }}>
+				<Masonry gutter="10px">
 					{images.map((image, idx) => (
 						<img
 							key={`image_${idx}`}
 							src={image.small.file}
-							style={{ width: '100%', display: 'block' }}
-							alt=""
+							className='gallery-img'
 							onClick={() => openLightbox(props, idx)}
 						/>
 					))}

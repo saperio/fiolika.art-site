@@ -21,7 +21,7 @@ const renderPage = props => {
 export default props => (
 	<div>
 		<Nav page={props.page}/>
-		<div style={{ width: '90%', margin: '0 auto'}}>
+		<div id='main-container'>
 			<Transition enterTime={500} exitTime={300} page={props.page}>
 				{renderPage(props)}
 			</Transition>
