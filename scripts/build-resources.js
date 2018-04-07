@@ -5,9 +5,7 @@ const sharp = require('sharp');
 
 const srcStatic = [
 	'./src/index.html',
-	'./resources/me.jpg',
-	'./resources/CNAME',
-	'./resources/favicon.ico'
+	'./resources/static/**'
 ];
 const srcImages = './resources';
 const destRoot = './build';
@@ -22,12 +20,14 @@ run();
 
 async function run() {
 	// copy static
-	await Promise.all(srcStatic.map(src => processStaticFile(src)));
+	await processStaticFiles();
 
 	// remove dest dir contents
 	await fse.emptyDir(path.join(destRoot, destImages));
 
 	// process images
+	console.log('process images:');
+
 	const meta = {};
 	const sectionsList = await glob(`${srcImages}/*`, { onlyDirectories: true });
 	for (let section of sectionsList) {
@@ -43,11 +43,16 @@ async function run() {
 	await fse.outputJson(path.join(destRoot, destMeta), meta, { spaces: 2 });
 }
 
-async function processStaticFile(filename) {
-	const exists = await fse.pathExists(filename);
-	if (exists) {
-		await fse.copy(filename, path.join(destRoot, path.basename(filename)))
-	}
+async function processStaticFiles() {
+	console.log('copy files:');
+
+	const files = await glob(srcStatic);
+	await Promise.all(
+		files.map(src => {
+			console.log(src);
+			return fse.copy(src, path.join(destRoot, path.basename(src)));
+		})
+	);
 }
 
 async function processImages(sectionName, imageList) {
