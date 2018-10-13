@@ -3,10 +3,8 @@ const glob = require('fast-glob');
 const fse = require('fs-extra');
 const sharp = require('sharp');
 
-const srcStatic = [
-	'./src/index.html',
-	'./resources/static/**'
-];
+const srcStatic = './resources/static/**';
+const srcIndex = './src/index.html';
 const srcImages = './resources';
 const destRoot = './build';
 const destImages = 'img';
@@ -22,7 +20,7 @@ async function run() {
 	// copy static
 	await processStaticFiles();
 
-	// remove dest dir contents
+	// remove images dest dir contents
 	await fse.emptyDir(path.join(destRoot, destImages));
 
 	// process images
@@ -46,13 +44,18 @@ async function run() {
 async function processStaticFiles() {
 	console.log('copy files:');
 
+	await copy(srcIndex);
+	await copy(srcIndex, '200.html');
+
 	const files = await glob(srcStatic);
-	await Promise.all(
-		files.map(src => {
-			console.log(src);
-			return fse.copy(src, path.join(destRoot, path.basename(src)));
-		})
-	);
+	await Promise.all(files.map(src => copy(src)));
+}
+
+async function copy(from, to) {
+	to = path.join(destRoot, to ? to : path.basename(from));
+
+	console.log(from, ' -> ', to);
+	await fse.copy(from, to);
 }
 
 async function processImages(sectionName, imageList) {
