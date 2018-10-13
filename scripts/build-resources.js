@@ -27,12 +27,12 @@ async function run() {
 	console.log('process images:');
 
 	const meta = {};
-	const sectionsList = await glob(`${srcImages}/*`, { onlyDirectories: true });
+	const sectionsList = await glob(`${srcImages}/section*`, { onlyDirectories: true });
 	for (let section of sectionsList) {
 		let imageList = await glob([`${section}/*.jpg`, `${section}/*.png`]);
 		let sectionName = path.basename(section);
 
-		let sectionMeta = await processImages(sectionName, imageList);
+		let sectionMeta = await processImages(imageList);
 		meta[sectionName] = sectionMeta;
 	}
 
@@ -58,7 +58,7 @@ async function copy(from, to) {
 	await fse.copy(from, to);
 }
 
-async function processImages(sectionName, imageList) {
+async function processImages(imageList) {
 	const meta = []
 	for (let image of imageList) {
 		let imageMeta = await processImage(image);
@@ -90,9 +90,10 @@ async function processImage(imagePath) {
 		.clone()
 		.resize(smallImageSize, null)
 		.toFormat('jpeg')
-		.toBuffer()
+		.toBuffer({ resolveWithObject: true })
 	;
-	await fse.outputFile(path.join(destRoot, smallImageFile), smallImage);
+
+	await fse.outputFile(path.join(destRoot, smallImageFile), smallImage.data);
 
 	// read image notes
 	const notes = await readNotes(imagePath);
@@ -107,7 +108,8 @@ async function processImage(imagePath) {
 			file: largeImageFile
 		},
 		small: {
-			file: smallImageFile
+			file: smallImageFile,
+			height: smallImage.info.height
 		}
 	};
 
