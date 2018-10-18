@@ -4,7 +4,7 @@ const fse = require('fs-extra');
 const sharp = require('sharp');
 
 const srcStatic = './resources/static/**';
-const srcIndex = './src/index.html';
+const srcIndex = './src/index-prod.html';
 const srcImages = './resources';
 const destRoot = './build';
 const destImages = 'img';
@@ -44,7 +44,7 @@ async function run() {
 async function processStaticFiles() {
 	console.log('copy files:');
 
-	await copy(srcIndex);
+	await copy(srcIndex, 'index.html');
 	await copy(srcIndex, '200.html');
 
 	const files = await glob(srcStatic);
