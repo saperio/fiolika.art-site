@@ -1,6 +1,6 @@
 import React from 'react';
 
-const text = `My name is Anastasiya.`;
+const text = `Hello! I'm Asya. I make our world brighter! I draw with watercolors, markers and pencils. I keen on children's style, animals and nature. You can feel free to contact me with any idea and we will bring it to a juicy result! I am a Master of Architecture, I worked as an architect restorer, painted silk, wood and glass, and even created jewelery! So let's create something new and interesting together!`;
 
 export default () => (
 	<div className="about">
