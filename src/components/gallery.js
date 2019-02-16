@@ -65,7 +65,7 @@ export default class Gallary extends React.Component {
 						.slice(0, loaded)
 						.map((image, idx) => (
 							<img
-								style={{ height: image.small.height }}
+								style={{ 'max-height': image.small.height }}
 								key={`image_${idx}`}
 								src={image.small.file}
 								className='gallery-img'
