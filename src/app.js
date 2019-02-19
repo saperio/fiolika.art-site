@@ -3,7 +3,7 @@ import Transition from './transition';
 import Gallary from './components/gallery';
 import About from './components/about';
 import Nav from './components/nav';
-import { PAGE_ABOUT, PAGE_SECT1, PAGE_SECT2, PAGE_SECT3 } from './constants';
+import { PAGE_ABOUT, PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_SECT4, PAGE_SECT5 } from './constants';
 
 
 const renderPage = props => {
@@ -12,6 +12,8 @@ const renderPage = props => {
 		case PAGE_SECT1: return <Gallary key={page} images={imagesDB.section1 || []} {...props}/>;
 		case PAGE_SECT2: return <Gallary key={page} images={imagesDB.section2 || []} {...props}/>;
 		case PAGE_SECT3: return <Gallary key={page} images={imagesDB.section3 || []} {...props}/>;
+		case PAGE_SECT4: return <Gallary key={page} images={imagesDB.section4 || []} {...props}/>;
+		case PAGE_SECT5: return <Gallary key={page} images={imagesDB.section5 || []} {...props}/>;
 		case PAGE_ABOUT: return <About key={page}/>;
 		default: return <div key="empty_page"></div>;
 	}

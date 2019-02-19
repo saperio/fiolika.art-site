@@ -1,8 +1,8 @@
 import { setPage } from './state';
 import { addRoutes, register, getLocation } from 'lucid-router';
-import { PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_ABOUT } from './constants';
+import { PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_SECT4, PAGE_SECT5, PAGE_ABOUT } from './constants';
 
-const pages = [PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_ABOUT];
+const pages = [PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_SECT4, PAGE_SECT5, PAGE_ABOUT];
 
 export const initRouter = () => {
 	addRoutes([
