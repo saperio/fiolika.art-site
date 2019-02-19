@@ -2,10 +2,11 @@ const path = require('path').posix;
 const glob = require('fast-glob');
 const fse = require('fs-extra');
 const sharp = require('sharp');
+const iconv = require('iconv-lite');
 
 const srcStatic = './resources/static/**';
 const srcIndex = './src/index-prod.html';
-const srcImages = './resources';
+const srcImages = './resources/section*';
 const destRoot = './build';
 const destImages = 'img';
 const destMeta = 'images.json';
@@ -27,18 +28,50 @@ async function run() {
 	console.log('process images:');
 
 	const meta = {};
-	const sectionsList = await glob(`${srcImages}/section*`, { onlyDirectories: true });
+	const sectionsList = await glob(srcImages, { onlyDirectories: true });
 	for (let section of sectionsList) {
-		let imageList = await glob([`${section}/*.jpg`, `${section}/*.png`]);
-		let sectionName = path.basename(section);
+		const imageList = await glob([`${section}/*.jpg`, `${section}/*.png`]);
+		const imageListSorted = await sortImages(imageList);
+		const sectionMeta = await processImages(imageListSorted);
+		const sectionName = path.basename(section);
 
-		let sectionMeta = await processImages(imageList);
 		meta[sectionName] = sectionMeta;
 	}
 
 	console.log(`process all images in ${processTimeAll / 1000}s`);
 
 	await fse.outputJson(path.join(destRoot, destMeta), meta, { spaces: 2 });
+}
+
+async function sortImages(imageList) {
+	if (!imageList || !imageList.length) {
+		return imageList;
+	}
+
+	let buf;
+	try {
+		buf = await fse.readFile(path.join(path.dirname(imageList[0]), 'fssort.ini'));
+	} catch(e) {
+		return imageList;
+	}
+
+	const sortList = iconv.decode(buf, 'win1251').split('\r\n');
+	const imageListSorted = [];
+
+	for (let name of sortList) {
+		if (!name || !name.length || !imageList.length) {
+			break;
+		}
+
+		for (let i = 0; i < imageList.length; ++i) {
+			if (imageList[i].toUpperCase().indexOf('/' + name) !== -1) {
+				imageListSorted.push(imageList.splice(i, 1)[0]);
+				break;
+			}
+		}
+	}
+
+	return imageListSorted.concat(imageList);
 }
 
 async function processStaticFiles() {
