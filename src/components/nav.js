@@ -17,8 +17,8 @@ export default props => (
 				{link(PAGE_SECT1, 'patterns', props)}
 				{link(PAGE_SECT2, 'landscapes', props)}
 				{link(PAGE_SECT3, 'characters', props)}
-				{link(PAGE_SECT4, 'my way', props)}
-				{link(PAGE_SECT5, 'elements', props)}
+				{link(PAGE_SECT4, 'elements', props)}
+				{link(PAGE_SECT5, 'my way', props)}
 				{link(PAGE_ABOUT, 'about me & contacts', props)}
 			</div>
 		</div>
