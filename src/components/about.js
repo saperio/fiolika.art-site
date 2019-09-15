@@ -18,10 +18,11 @@ export default () => (
 		<p>You can reach me at:</p>
 		<div id="contacts">
 			{contactLink('https://www.instagram.com/fiolika.art', 'instagram')}
+			{contactLink('https://www.youtube.com/channel/UCT2xWQ-G5-cPKZvMBZQptJg', 'youtube')}
 			{contactLink('https://www.shutterstock.com/g/anastasiyacraft', 'shutterstock')}
 			{contactLink('https://creativemarket.com/fiolika', 'creativemarket')}
 			{contactLink('https://www.etsy.com/shop/Fiolika', 'etsy')}
-			{contactLink('https://vk.com/happy_present', 'vk')}
+			{contactLink('https://vk.com/fiolika_art', 'vk')}
 			{contactLink('mailto:an.provozina@yandex.ru', 'mail', 'an.provozina@yandex.ru')}
 		</div>
 	</div>
