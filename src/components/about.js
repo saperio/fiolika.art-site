@@ -21,7 +21,8 @@ export default () => (
 			{contactLink('https://www.youtube.com/channel/UCT2xWQ-G5-cPKZvMBZQptJg', 'youtube')}
 			{contactLink('https://www.shutterstock.com/g/anastasiyacraft', 'shutterstock')}
 			{contactLink('https://creativemarket.com/fiolika', 'creativemarket')}
-			{contactLink('https://www.etsy.com/shop/Fiolika', 'etsy')}
+			{contactLink('https://www.redbubble.com/people/fiolika', 'redbubble', 'you can buy my merch here')}
+			{contactLink('https://www.maryjane.ru/catalog/author/fiolika/', 'maryjane', 'you can buy my merch here')}
 			{contactLink('https://vk.com/fiolika_art', 'vk')}
 			{contactLink('mailto:an.provozina@yandex.ru', 'mail', 'an.provozina@yandex.ru')}
 		</div>
