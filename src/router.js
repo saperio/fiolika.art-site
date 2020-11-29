@@ -1,8 +1,7 @@
 import { setPage } from './state';
 import { addRoutes, register, getLocation } from 'lucid-router';
-import { PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_SECT4, PAGE_SECT5, PAGE_ABOUT } from './constants';
+import { pagesInfo } from './constants';
 
-const pages = [PAGE_SECT1, PAGE_SECT2, PAGE_SECT3, PAGE_SECT4, PAGE_SECT5, PAGE_ABOUT];
 
 export const initRouter = () => {
 	addRoutes([
@@ -10,7 +9,7 @@ export const initRouter = () => {
 			path: '/',
 			name: 'index'
 		},
-		...pages.map(name => ({ path: `/${name}`, name })),
+		...pagesInfo.map(info => ({ path: `/${info.url}`, name: info.url })),
 		{
 			path: '/*',
 			name: 'unknown'
@@ -26,7 +25,7 @@ export const initRouter = () => {
 
 function setLocation(location) {
 	const { name } = location;
-	const page = name === 'index' || name === 'unknown' ? PAGE_ABOUT : name;
+	const page = name === 'index' || name === 'unknown' ? 'about' : name;
 
 	setPage(page);
 }
