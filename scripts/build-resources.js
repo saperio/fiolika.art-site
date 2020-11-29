@@ -110,8 +110,7 @@ async function processImage(imagePath) {
 	const largeImageFile = path.join(destImages, `i${idx}.jpg`);
 	const largeImage = await processor
 		.clone()
-		.resize(largeImageSize, largeImageSize)
-		.max()
+		.resize(largeImageSize, largeImageSize, { fit: 'inside' })
 		.toFormat('jpeg')
 		.toBuffer()
 	;
