@@ -30,7 +30,7 @@ async function run() {
 	const meta = {};
 	const sectionsList = await glob(srcImages, { onlyDirectories: true });
 	for (let section of sectionsList) {
-		const imageList = await glob([`${section}/*.jpg`, `${section}/*.png`]);
+		const imageList = await glob(`${section}/*`);
 		const imageListSorted = await sortImages(imageList);
 		const sectionMeta = await processImages(imageListSorted);
 		const sectionName = path.basename(section);
@@ -47,6 +47,11 @@ async function sortImages(imageList) {
 	if (!imageList || !imageList.length) {
 		return imageList;
 	}
+
+	imageList = imageList.filter(filename => {
+		filename = filename.toLowerCase();
+		return filename.endsWith('png') || filename.endsWith('jpg');
+	});
 
 	let buf;
 	try {
