@@ -29,9 +29,9 @@ export const pagesInfo = [
 		type: PAGE_TYPE.GALLERY
 	},
 	{
-		title: 'digital',
+		title: 'flowers',
 		dbSection: 'section5',
-		url: 'digital',
+		url: 'flowers',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
