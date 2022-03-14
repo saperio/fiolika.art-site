@@ -24,6 +24,7 @@ export default () => (
 			{contactLink('https://www.redbubble.com/people/fiolika', 'redbubble', 'you can buy my merch here')}
 			{contactLink('https://www.maryjane.ru/catalog/author/fiolika/', 'maryjane', 'you can buy my merch here')}
 			{contactLink('https://vk.com/fiolika_art', 'vk')}
+			{contactLink('https://www.twine.net/fiolika', 'twine')}
 			{contactLink('mailto:an.provozina@yandex.ru', 'mail', 'an.provozina@yandex.ru')}
 		</div>
 	</div>
