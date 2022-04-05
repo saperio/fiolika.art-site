@@ -9,7 +9,7 @@
     "build-resources": "node ./scripts/build-resources",
     "build": "npm run build-code && npm run build-resources",
     "serv": "static ./build -p 9966 --spa",
-    "publish": "vercel --prod ./build"
+    "deploy": "vercel --prod ./build"
   },
   "babel": {
     "presets": [
