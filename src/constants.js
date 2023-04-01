@@ -5,21 +5,21 @@ export const PAGE_TYPE = {
 
 export const pagesInfo = [
 	{
-		title: 'patterns',
-		dbSection: 'section1',
-		url: 'patterns',
-		type: PAGE_TYPE.GALLERY
-	},
-	{
-		title: 'landscapes',
-		dbSection: 'section2',
-		url: 'landscapes',
+		title: 'game props',
+		dbSection: 'section8',
+		url: 'gameprops',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
 		title: 'characters',
 		dbSection: 'section3',
 		url: 'characters',
+		type: PAGE_TYPE.GALLERY
+	},
+	{
+		title: 'landscapes',
+		dbSection: 'section2',
+		url: 'landscapes',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
@@ -32,6 +32,12 @@ export const pagesInfo = [
 		title: 'flowers',
 		dbSection: 'section5',
 		url: 'flowers',
+		type: PAGE_TYPE.GALLERY
+	},
+	{
+		title: 'patterns',
+		dbSection: 'section1',
+		url: 'patterns',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
