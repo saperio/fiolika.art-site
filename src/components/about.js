@@ -10,7 +10,6 @@ const contactLink = (url, name, desc) => (
 	</div>
 );
 
-
 export default () => (
 	<div className="about">
 		<img id="ava" src="me.jpg" />
@@ -19,6 +18,8 @@ export default () => (
 		<span>{text2}</span>
 		<p>You can reach me at:</p>
 		<div id="contacts">
+			{contactLink('https://www.artstation.com/fiolika', 'artstation')}
+			{contactLink('https://www.behance.net/fiolika', 'behance')}
 			{contactLink('https://www.instagram.com/fiolika.art', 'instagram')}
 			{contactLink('https://www.youtube.com/channel/UCT2xWQ-G5-cPKZvMBZQptJg', 'youtube')}
 			{contactLink('https://www.shutterstock.com/g/anastasiyacraft', 'shutterstock')}
