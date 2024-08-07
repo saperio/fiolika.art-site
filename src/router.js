@@ -1,5 +1,5 @@
-import { setPage } from './state';
 import { addRoutes, register, getLocation } from 'lucid-router';
+import { setPage } from './state';
 import { pagesInfo } from './constants';
 
 

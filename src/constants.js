@@ -5,15 +5,21 @@ export const PAGE_TYPE = {
 
 export const pagesInfo = [
 	{
-		title: 'game props',
+		title: 'game art',
 		dbSection: 'section8',
-		url: 'gameprops',
+		url: 'gameart',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
 		title: 'characters',
 		dbSection: 'section3',
 		url: 'characters',
+		type: PAGE_TYPE.GALLERY
+	},
+	{
+		title: 'books',
+		dbSection: 'section9',
+		url: 'books',
 		type: PAGE_TYPE.GALLERY
 	},
 	{
